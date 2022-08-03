@@ -152,9 +152,13 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+function getLastReview(arr) {
+  let name = arr[arr.length-1].name;
+  let rating = arr[arr.length-1].rating;
+  let feedback = arr[arr.length-1].feedback;
+  return `${name} gave the restaurant a ${rating} star review, and their feedback was: ${feedback}`;
 } 
+console.log(getLastReview(reviews));
 
 
 
