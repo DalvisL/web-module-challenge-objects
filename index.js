@@ -56,8 +56,16 @@ const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
+  discount: function(occupation) {
+    if(occupation === 'teacher' || occupation === 'student') {
+      return(this.price * .75);
+    } else {
+      return(this.price * .90);
+    }
+  }
   
 }
+console.log(burger.discount('teacher'));
 
 
 
@@ -77,7 +85,7 @@ const reviews = [
 Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
-
+console.log(reviews[5].name);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 (not auto-tested): 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -85,7 +93,7 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
   1. Add this feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
   2. log the reviews array to the console to check your work
 */
-
+reviews[7].feedback = 'this place is chill with really cool people, great for getting work done on weekdays'
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -100,9 +108,13 @@ Use the addReview function below to do the following:
 */
 
 
-function addReview(/*Your Code Here */){
-  /*Your Code Here */
+function addReview(revArray, revName, revRating, revFeedback){
+  revArray.push({name: revName, rating: revRating, feedback: revFeedback});
+  return revArray;
 }
+
+addReview(reviews, 'Abi', 4, 'exceptional service, will definitely come here again!');
+console.log(reviews[reviews.length-1]);
 
 
 
@@ -117,10 +129,14 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(arr, index) {
+  let name = arr[index].name;
+  let rating = arr[index].rating
+  let feedback = arr[index].feedback;
+  return `${name} gave the restaurant a ${rating} star review, and their feedback was: ${feedback}`;
 }
 
+console.log(getReviewByIndex(reviews, 4));
   
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
